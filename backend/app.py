@@ -5,7 +5,7 @@ from imblearn.combine import SMOTEENN
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from flask_cors import CORS  # Import CORS
-
+import os
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
@@ -101,4 +101,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT",5000))
+    app.run(host='0.0.0.0',port=port)
